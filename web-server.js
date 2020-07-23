@@ -12,8 +12,6 @@ var adder=function(num1,num2){
 
 }
 
-// Comment to test git
-
 app.get('/test',function(req,res){
     var username=req.query.username;
     console.log('I have been hit'+username);
@@ -29,32 +27,19 @@ app.get('/adder',function(req,res){
 
 app.get('/accounts',function(req,res){
     var acc1=parseInt(req.query.acc1);
-    var acc2=parseInt(req.query.acc2);
-    var result=getAccounts(acc1,acc2)
+    var result=getAccount(acc1)
     res.send('The result is '+result)
 })
 
-var getAccounts=function(acc1,acc2){
-    var result = acc1+acc2;
-    return result
-
-}
-
-app.get('/getaccounts',function(req,res){
-    var acc1=parseInt(req.query.acc1);
-    var result=newGetAccount(acc1)
-    res.send('The result is '+result)
-})
-
-var newGetAccount=function(acc1){
+var getAccount=function(acc1){
     if (acc1 == 0)
-    var result = 'id: '+ accounts[0].id+' name: '+accounts[0].name+' deposit amount: '+accounts[0].deposit;
+    var result = 'id: '+ accounts[0].id+', name: '+accounts[0].name+', deposit amount: '+accounts[0].deposit;
 
     else if (acc1 == 1)
-    var result = 'id: '+ accounts[1].id+' name: '+accounts[1].name+' deposit amount: '+accounts[1].deposit;
+    var result = 'id: '+ accounts[1].id+', name: '+accounts[1].name+', deposit amount: '+accounts[1].deposit;
 
     else if (acc1 == 2)
-    var result = 'id: '+ accounts[2].id+' name: '+accounts[2].name+' deposit amount: '+accounts[2].deposit;
+    var result = 'id: '+ accounts[2].id+', name: '+accounts[2].name+', deposit amount: '+accounts[2].deposit;
 
     else
     var result = 'there is no account with that ID number.'

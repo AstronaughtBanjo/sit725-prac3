@@ -27,6 +27,48 @@ app.get('/adder',function(req,res){
     res.send('The result is '+result)
 })
 
+app.get('/accounts',function(req,res){
+    var acc1=parseInt(req.query.acc1);
+    var acc2=parseInt(req.query.acc2);
+    var result=getAccounts(acc1,acc2)
+    res.send('The result is '+result)
+})
+
+var getAccounts=function(acc1,acc2){
+    var result = acc1+acc2;
+    return result
+
+}
+
+app.get('/getaccounts',function(req,res){
+    var acc1=parseInt(req.query.acc1);
+    var result=newGetAccount(acc1)
+    res.send('The result is '+result)
+})
+
+var newGetAccount=function(acc1){
+    if (acc1 == 0)
+    var result = 'id: '+ accounts[0].id+' name: '+accounts[0].name+' deposit amount: '+accounts[0].deposit;
+
+    else if (acc1 == 1)
+    var result = 'id: '+ accounts[1].id+' name: '+accounts[1].name+' deposit amount: '+accounts[1].deposit;
+
+    else if (acc1 == 2)
+    var result = 'id: '+ accounts[2].id+' name: '+accounts[2].name+' deposit amount: '+accounts[2].deposit;
+
+    else
+    var result = 'there is no account with that ID number.'
+    
+    return result
+
+}
+
+let accounts=[
+    {id:1,name:'Alex',deposit:5},
+    {id:2,name:'Sarah',deposit:5},
+    {id:3,name:'Jim',deposit:15}   
+]
+
 
 app.listen(port)
 console.log('Server listening on: '+port)
